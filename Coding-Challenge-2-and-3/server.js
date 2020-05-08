@@ -10,7 +10,7 @@ const {Sport} = require('./models/sport-model');
 
 /* Your code goes here */
 
-app.delete( '/sports/delete', jsonParser, (req, res) => {
+app.delete( '/sports/delete/:id', jsonParser, (req, res) => {
     console.log("Deleting a Sport.");
     console.log(req.params);
 
@@ -22,10 +22,10 @@ app.delete( '/sports/delete', jsonParser, (req, res) => {
         return res.status( 406 ).end();
     }
 
-    /*if( id != idP ) {
+    if( id != idP ) {
         res.statusMessage = "The 'id' in the body must be same as in the parameter.";
         return res.status( 409 ).end();
-    }*/
+    }
 
     Sport
         .delete(id)
